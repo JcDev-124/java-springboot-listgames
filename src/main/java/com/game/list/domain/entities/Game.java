@@ -2,6 +2,7 @@ package com.game.list.domain.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.beans.BeanUtils;
 
 @Getter
 @Setter
@@ -27,4 +28,7 @@ public class Game {
     @Column(columnDefinition = "TEXT")
     private String longDescription;
 
+    public Game(Game dto){
+        BeanUtils.copyProperties(dto, this);
+    }
 }
