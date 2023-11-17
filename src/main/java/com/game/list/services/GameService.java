@@ -17,6 +17,7 @@ public class GameService {
     @Autowired
     GameRepository gameRepository;
 
+
     @Transactional(readOnly = true)
     public GameDTO findById(Long id){
         Game result = gameRepository.findById(id).get();
@@ -37,6 +38,5 @@ public class GameService {
                         new GameMinDTO(x.getId(),x.getTitle(),x.getYear(),x.getImgUrl(),x.getShortDescription()))
                 .toList();
     }
-
 
 }

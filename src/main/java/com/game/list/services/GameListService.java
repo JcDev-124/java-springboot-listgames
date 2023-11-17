@@ -22,6 +22,12 @@ public class GameListService {
     @Autowired
     private GameRepository gameRepository;
 
+    @Transactional
+    public void createdList(GameListDTO dto){
+        GameList list = new GameList(dto.id(), dto.name());
+        gameListRepository.save(list);
+    }
+
     @Transactional(readOnly = true)
     public List<GameListDTO> getAllGameList(){
         List<GameList> list = gameListRepository.findAll();

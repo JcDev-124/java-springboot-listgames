@@ -16,10 +16,8 @@ public class GameListController {
 
     @Autowired
     private GameListService gameListService;
-
     @Autowired
     private GameService gameService;
-
     @GetMapping
     public List<GameListDTO>    getAllGameList(){
         return gameListService.getAllGameList();
@@ -33,5 +31,10 @@ public class GameListController {
     @PostMapping(value = "/{listId}/move")
     public void moveGameOnList(@PathVariable Long listId, @RequestBody ReplacementDTO body){
             gameListService.moveGameOnList(listId, body.sourceIndex(), body.destinationIndex());
+    }
+
+    @PostMapping
+    public void createdList(@RequestBody GameListDTO dto){
+        gameListService.createdList(dto);
     }
 }
